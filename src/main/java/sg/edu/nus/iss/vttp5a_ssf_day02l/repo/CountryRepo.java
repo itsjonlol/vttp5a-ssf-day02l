@@ -11,10 +11,10 @@ import sg.edu.nus.iss.vttp5a_ssf_day02l.model.Country;
 public class CountryRepo {
     List<Country> countryList;
     
-    public List<Country> getCountries() {
+    public CountryRepo() {
         if (countryList == null) {
             countryList = new ArrayList<>();
-        }
+        
         
 
         Country cty = new Country("SG","Singapore",6000000);
@@ -31,8 +31,11 @@ public class CountryRepo {
         countryList.add(cty);
 
 
-        return countryList;
 
+    }
+}
+    public List<Country> getCountries() {
+        return countryList;
     }
 
     public Boolean createCountry(Country cty) {

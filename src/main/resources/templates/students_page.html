@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+
+            <tr>
+                <th>Index</th>
+                <th>Even</th>
+                <th>First</th>
+                <th>Last</th>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>DOB</th>
+                <th>Email</th>
+                <th>Address</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="student, status : ${students}" th:object = "${student}">
+                <td data-th-text="${status.index + 1}"></td>
+                <td data-th-text="${status.even}"></td>
+                <td data-th-utext="${status.first}"></td>
+                <td data-th-utext="${status.last}"></td>
+                <td th:text = "*{id}"></td>
+                <td th:text = "*{firstName}"></td>
+                <td th:text = "*{lastName}"></td>
+                <!-- <td th:text="${#dates.format(student.dob, 'dd MMM yyyy HH:mm')}"></td>  -->
+                <td th:text = "*{birthDate}"></td>
+                <td th:text = "*{dob}"></td>
+                
+                
+                <td th:text = "*{email}"></td>
+                <td th:text = "*{address}"></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+</body>
+</html>

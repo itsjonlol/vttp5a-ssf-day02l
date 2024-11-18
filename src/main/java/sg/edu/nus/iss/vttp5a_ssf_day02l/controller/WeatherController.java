@@ -23,7 +23,7 @@ public class WeatherController {
     @Autowired
     CountryService countryService;
 
-    @GetMapping("") // /weather?countries=Israel /weather?country=Israel&metrics=kilometers
+    @GetMapping("") // /weather?country=Israel /weather?country=Israel&metrics=kilometers
     public String weather(@RequestParam(required = true,name = "country",defaultValue="Singapore") String city,
     @RequestParam(name = "metrics",defaultValue="centimeters") String metrics,Model model){
         model.addAttribute("city",city);
@@ -41,9 +41,58 @@ public class WeatherController {
         return "weather_page";
         
     }
+
+    @GetMapping("/test") //weather/test?city=singapore&metrics=kilo
+    public String weather3(@RequestParam MultiValueMap<String,String> queryParams,Model model) {
+        //String city = queryParams.getFirst("city");
+        List<String> cities = queryParams.get("cities"); // /weather/test?cities=singapore&cities=china&metrics=kilo
+        String metrics = queryParams.getFirst("metrics");
+
+        // for (String str : queryParams.keySet()) {
+        //     //formData.put(str,form.getFirst(str));
+        //     System.out.println(str + ">>>" + queryParams.getFirst(str));
+        // }
+        String city = "";
+        if (city == null) {
+            city = "defaultCity";
+        } else {
+            city = "test";
+        }
+        model.addAttribute("city",city);
+        model.addAttribute("metrics",metrics);
+
+        for ( String cityy : cities) {
+            System.out.println("The city is: " + cityy);
+        }
+
+
+        return "weather_page";
+    }
+
+    @GetMapping("test2") // http://localhost:8080/weather/test2?country=tai&metrics=units&songs=test1&songs=test2
+    public String weather(@RequestParam(required = true,name = "country",defaultValue="Singapore") String city,
+    @RequestParam(name = "metrics",defaultValue="centimeters") String metrics,
+    @RequestParam(name = "songs") List<String> songs, Model model){
+       
+
+        model.addAttribute("city",city);
+        model.addAttribute("metrics",metrics);
+        for (String song : songs) {
+            System.out.println(song);
+        }
+        return "weather_page";
+        //if you dont set a default value for country, there will be an error because required = true
+        //if dont set name, it will default to the parameter name
+        
+
+    }
+
+    
+    
+
     @GetMapping("/pagea")
     public String pageA(Model model) {
-        String[] units = {"milimeters, centimeters","kilometers"};
+        String[] units = {"milimeters","centimeters","kilometers"};
         
 
         List<Country> countries = countryService.getCountries();
@@ -70,6 +119,25 @@ public class WeatherController {
         
 
         return "forma";
+        
+    }
+
+    @GetMapping("/formb") 
+    public String showFormb() {
+        return "formb";
+    }
+    @PostMapping("/formb")
+    public String handlePageb(@RequestBody MultiValueMap<String,String> form) {
+        //Map<String,String> formData = new HashMap<>();
+        
+        for (String str : form.keySet()) {
+            //formData.put(str,form.getFirst(str));
+            System.out.println(str + ">>>" + form.getFirst(str));
+        }
+
+        
+
+        return "formb";
         
     }
 
