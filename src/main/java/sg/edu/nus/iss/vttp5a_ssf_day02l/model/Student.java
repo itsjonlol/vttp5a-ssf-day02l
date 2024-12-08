@@ -1,5 +1,7 @@
 package sg.edu.nus.iss.vttp5a_ssf_day02l.model;
 
+import java.util.Date;
+
 public class Student {
     
     private Integer id;
@@ -9,17 +11,20 @@ public class Student {
     private String dob;
     private String email;
     private String address;
+    private Date birthDateDate;
     
     public Student() {
     }
 
-    public Student(Integer id, String firstName, String lastName, Long birthDate, String email, String address) {
+    public Student(Integer id, String firstName, String lastName, Long birthDate, Date birthDateDate , String dob, String email, String address) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.email = email;
         this.address = address;
+        this.birthDateDate = birthDateDate;
+        this.dob = dob;
     }
 
     
@@ -97,6 +102,15 @@ public class Student {
         this.dob = dob;
     }
 
+    public Date getBirthDateDate() {
+        return birthDateDate;
+    }
+
+    public void setBirthDateDate(Date birthDateDate) {
+        this.birthDateDate = birthDateDate;
+    }
+
+    
     
 
 }

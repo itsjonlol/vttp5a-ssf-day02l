@@ -30,17 +30,17 @@ public class StudentController {
         Date dDob = sdf.parse(dob);
         Long epochDob = dDob.getTime();
 
-        // Long epochTime = 188103300000L;
-        // Date dTime = new Date(epochTime);
-        // String formattedTime = sdf.format(dTime);
+        Long epochTime = 188103300000L;
+        Date dTime = new Date(epochTime);
+        String formattedTime = sdf.format(dTime);
 
-        Student s1 = new Student(1, "Damien", "Cumming", epochDob, "damient@nus.edu.sg", "25 HMKT 119615");
+        Student s1 = new Student(1, "Damien", "Cumming", epochDob, dDob,formattedTime ,"damient@nus.edu.sg", "25 HMKT 119615");
         students.add(s1);
 
-        Student s2 = new Student(1, "Darryl", "Ng", epochDob, "darrylng@nus.edu.sg", "25 HMKT 119615");
+        Student s2 = new Student(1, "Darryl", "Ng", epochDob,dDob,formattedTime, "darrylng@nus.edu.sg", "25 HMKT 119615");
         students.add(s2);
 
-        Student s3 = new Student(1, "Brandon", "Ng", epochDob, "bradonng@nus.edu.sg", "25 HMKT 119615");
+        Student s3 = new Student(1, "Brandon", "Ng", epochDob,dDob,formattedTime, "bradonng@nus.edu.sg", "25 HMKT 119615");
         students.add(s3);
 
         // Student s4 = new Student(1, "Damien", "Cumming", dob, "damient@nus.edu.sg", "25 HMKT 119615");

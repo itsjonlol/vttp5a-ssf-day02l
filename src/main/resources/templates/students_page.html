@@ -17,9 +17,15 @@
                 <th>ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>DOB</th>
-                <th>Email</th>
-                <th>Address</th>
+                <th>DOB LONG</th>
+                <th>DOB DATE</th>
+                <!-- <th>Email</th>
+                <th>Address</th> -->
+                <th>DOB LONG (unf)</th>
+                <th>DOB DATE (unf)</th>
+                <th>DOB string</th>
+                <th>Test format LONG </th>
+                <th>Test format DATE</th>
                 
             </tr>
         </thead>
@@ -32,13 +38,15 @@
                 <td th:text = "*{id}"></td>
                 <td th:text = "*{firstName}"></td>
                 <td th:text = "*{lastName}"></td>
-                <!-- <td th:text="${#dates.format(student.dob, 'dd MMM yyyy HH:mm')}"></td>  -->
+                <td th:text="${#dates.format(student.birthDate, 'dd MMM yyyy HH:mm')}"></td> 
+                <td th:text="${#dates.format(student.birthDateDate, 'dd MMM yyyy HH:mm')}"></td> 
                 <td th:text = "*{birthDate}"></td>
-                <td th:text = "*{dob}"></td>
-                
-                
-                <td th:text = "*{email}"></td>
-                <td th:text = "*{address}"></td>
+                <td th:text = "*{birthDateDate}"></td>
+                <td th:text="*{dob}"></td>
+                <td th:text="${#dates.format(student.birthDate, 'yyyy/MM/dd')}"></td> 
+                <td th:text="${#dates.format(student.birthDateDate, 'EEE, d MMM yyyy hh:mm:ss Z')}"></td> 
+                <!-- <td th:text = "*{email}"></td>
+                <td th:text = "*{address}"></td> -->
             </tr>
         </tbody>
     </table>
